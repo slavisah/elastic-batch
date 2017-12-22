@@ -2,6 +2,7 @@ package io.github.slavisah.elasticbatch.domain;
 
 import java.util.Date;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 import org.apache.commons.lang.builder.ReflectionToStringBuilder;
@@ -80,6 +81,19 @@ public class Employee {
     public String toString() {
         ReflectionToStringBuilder.setDefaultStyle(ToStringStyle.SHORT_PREFIX_STYLE);
         return ReflectionToStringBuilder.toString(this);
+    }
+
+    @Override
+    public int hashCode() {
+        return 31;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (!(object instanceof Employee)) return false;
+        Employee castedObject = (Employee) object;
+        return getEmpNo() != null && Objects.equals(getEmpNo(), castedObject.getEmpNo());
     }
 
 }
